@@ -1,37 +1,28 @@
-/**
- * Created by lokeshagrawal on 07/05/17.
- */
-import React from 'react';
+import React, {Component} from 'react';
 
-/*
-const VideoListItem = (props) => {
-    const video = props.video;
-    return(
-        <li>
-            Video
-        </li>
-    );
+
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+
+const VideoListItem  = (props) =>
+{
+    //const video=props.video;
+        return (
+            <div className={"card"} style= {{width:"100%" ,backgroundColor:"#252629  "}}>
+
+            <li onClick={()=>{props.onVideoSelect(props.video)}} style={{listStyleType:"none"}}>
+                    <div className={"row"}>
+                         <div id="cc1" className={"col-6"}>
+                              <img src={props.video.snippet.thumbnails.default.url} style={{ borderColor:' grey',borderStyle: 'solid',borderWidth: 'medium'}}/>
+                         </div>
+                         <div id="cc2" className={"col-5"}>
+                              <p style={{color:'white'}}>{props.video.snippet.title}</p>
+                         </div>
+                    </div>
+
+              </li>
+              </div>
+        );
 }
-*/
-
-// ES 6 way, it says an object has a property called video please grab that and declare a new variable called video.
-const VideoListItem = ({video, onVideoSelect}) => {
-    // const video = props.video;
-    // const onVideoSelect = props.onVideoSelect;
-
-    return(
-        <li onClick={()=>onVideoSelect(video)} className="list-group-item">
-            <div className="video-list media">
-                <div className="media-left">
-                    <img className="media-object" src={video.snippet.thumbnails.default.url}/>
-                </div>
-
-                <div className="media-body">
-                    <div className="media-heading">{video.snippet.title}</div>
-                </div>
-            </div>
-        </li>
-    );
-}
-
 export default VideoListItem;
